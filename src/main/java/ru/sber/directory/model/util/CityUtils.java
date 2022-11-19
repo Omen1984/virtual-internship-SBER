@@ -70,4 +70,28 @@ public class CityUtils {
                 .sorted(Comparator.comparing(City::getDistrict).thenComparing(City::getName))
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Метод преобразовывает список городов в массив и путем перебора массива
+     * находит индекс элемента и значение с наибольшим количеством жителей города
+     * и выводит его в консоль
+     *
+     * @param cities
+     */
+    public static void searchForCityWithMostPopulation(List<City> cities) {
+        City[] cityArr = cities.stream()
+                .toArray(City[]::new);
+
+        int max = 0;
+        int indexMax = 0;
+        for (int i = 0; i < cityArr.length; i++) {
+            int population = cityArr[i].getPopulation();
+            if (population > max) {
+                max = population;
+                indexMax = i;
+            }
+        }
+        System.out.println(String.format("[%d] = %d", indexMax, max));
+    }
+
 }

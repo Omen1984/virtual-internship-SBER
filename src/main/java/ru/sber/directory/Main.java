@@ -9,10 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         List<City> cities = CityUtils.parse();
-        //Сортировка по наименованию города
-        //CityUtils.print(CityUtils.sortByName(cities));
-        //Сортировка по двум критериям
-        CityUtils.print(CityUtils.sortByDistrictAndName(cities));
+        //Поиск максимума в массиве
+        CityUtils.searchForCityWithMostPopulation(cities);
     }
 
 }
