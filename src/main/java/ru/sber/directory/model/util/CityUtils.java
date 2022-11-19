@@ -100,15 +100,7 @@ public class CityUtils {
     public static void searchForNumberOfCities(List<City> cities) {
         Map<String, Integer> regions = new HashMap<>();
 
-        for (City city : cities) {
-            if (!regions.containsKey(city.getRegion())) {
-                regions.put(city.getRegion(), 0);
-            }
-            regions.put(city.getRegion(), regions.get(city.getRegion()) + 1);
-        }
-
-        for (Map.Entry<String, Integer> region : regions.entrySet()) {
-            System.out.println(region.getKey() + " - " + region.getValue());
-        }
+        cities.forEach(city -> regions.merge(city.getRegion(), 1, Integer::sum));
+        regions.forEach((k, v) -> System.out.println(String.format("%s - %d", k, v)));
     }
 }
