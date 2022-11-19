@@ -55,7 +55,7 @@ public class CityUtils {
      */
     public static List<City> sortByName(List<City> cities) {
         return cities.stream()
-                .sorted(Comparator.comparing(o -> o.getName().toLowerCase()))
+                .sorted(((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName())))
                 .collect(Collectors.toList());
     }
 
