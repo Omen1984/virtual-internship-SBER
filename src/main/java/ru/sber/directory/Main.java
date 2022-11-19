@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         List<City> cities = CityUtils.parse();
         //Поиск максимума в массиве
-        CityUtils.SearchForCityWithMostPopulation(cities);
+        CityUtils.searchForCityWithMostPopulation(cities);
     }
 
 }

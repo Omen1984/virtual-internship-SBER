@@ -78,7 +78,7 @@ public class CityUtils {
      *
      * @param cities
      */
-    public static void SearchForCityWithMostPopulation(List<City> cities) {
+    public static void searchForCityWithMostPopulation(List<City> cities) {
         City[] cityArr = cities.stream()
                 .toArray(City[]::new);
 
