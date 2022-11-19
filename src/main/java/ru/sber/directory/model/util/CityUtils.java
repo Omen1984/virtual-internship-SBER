@@ -4,10 +4,7 @@ import ru.sber.directory.model.City;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CityUtils {
@@ -94,4 +91,24 @@ public class CityUtils {
         System.out.println(String.format("[%d] = %d", indexMax, max));
     }
 
+    /**
+     * Void метод который возвращает количество городов в разрезе
+     * регионов переданной в него коллекции с городами
+     *
+     * @param cities
+     */
+    public static void searchForNumberOfCities(List<City> cities) {
+        Map<String, Integer> regions = new HashMap<>();
+
+        for (City city : cities) {
+            if (!regions.containsKey(city.getRegion())) {
+                regions.put(city.getRegion(), 0);
+            }
+            regions.put(city.getRegion(), regions.get(city.getRegion()) + 1);
+        }
+
+        for (Map.Entry<String, Integer> region : regions.entrySet()) {
+            System.out.println(region.getKey() + " - " + region.getValue());
+        }
+    }
 }
