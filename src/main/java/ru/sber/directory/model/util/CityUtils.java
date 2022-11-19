@@ -1,0 +1,50 @@
+package ru.sber.directory.model.util;
+
+import ru.sber.directory.model.City;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class CityUtils {
+    public static List<City> parse() {
+        List<City> directoryCities = new ArrayList<>();
+        File path = new File("./src/main/resources/city_ru.csv");
+        try (Scanner sc = new Scanner(path)) {
+
+            while (sc.hasNext()) {
+                String cityCSV = sc.nextLine();
+                City city = parse(cityCSV);
+                directoryCities.add(city);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return directoryCities;
+    }
+
+    public static void print(List<City> directoryCities) {
+        directoryCities.forEach(System.out::println);
+    }
+
+    private static City parse(String cityCSV) {
+        try (Scanner sc = new Scanner(cityCSV)) {
+            sc.useDelimiter(";");
+            sc.skip("\\d*");
+
+            String name = sc.next();
+            String region = sc.next();
+            String district = sc.next();
+            int population = sc.nextInt();
+            String foundation = null;
+
+            if (sc.hasNext()) foundation = sc.next();
+            return new City(name, region, district, population, foundation);
+        }
+    }
+
+}

@@ -4,24 +4,18 @@ import java.util.Objects;
 
 public class City {
 
-    private final long id;
     private final String name;
     private final String region;
     private final String district;
     private final int population;
     private final String foundation;
 
-    public City(long id, String name, String region, String district, int population, String foundation) {
-        this.id = id;
+    public City(String name, String region, String district, int population, String foundation) {
         this.name = name;
         this.region = region;
         this.district = district;
         this.population = population;
         this.foundation = foundation;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getName() {
@@ -49,23 +43,22 @@ public class City {
         if (this == o) return true;
         if (!(o instanceof City)) return false;
         City city = (City) o;
-        return id == city.id;
+        return name.equals(city.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", region='" + region + '\'' +
                 ", district='" + district + '\'' +
                 ", population=" + population +
-                ", foundation=" + foundation +
+                ", foundation='" + foundation + '\'' +
                 '}';
     }
 }
