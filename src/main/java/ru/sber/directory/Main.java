@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         List<City> cities = CityUtils.parse();
-        //Поиск максимума в массиве
-        CityUtils.searchForCityWithMostPopulation(cities);
+        //Поиск количества городов в разрезе регионов
+        CityUtils.searchForNumberOfCities(cities);
     }
 
 }
